@@ -74,9 +74,9 @@ smart/
 ├── smart-register/              # Nacos 注册中心（内嵌，开发环境免部署）
 ├── smart-auth/                  # 认证服务（OAuth2 授权服务器）
 ├── smart-gateway/               # API 网关（Spring Cloud Gateway）
-├── smart-upms/                  # 用户权限管理服务
-│   ├── smart-upms-api/          # Feign 接口 + DTO
-│   └── smart-upms-biz/          # 业务实现（用户、角色、菜单、部门、字典等）
+├── smart-system/                  # 用户权限管理服务
+│   ├── smart-system-api/          # Feign 接口 + DTO
+│   └── smart-system-biz/          # 业务实现（用户、角色、菜单、部门、字典等）
 ├── smart-codegen/               # 代码生成器
 │   ├── smart-codegen-api/
 │   └── smart-codegen-biz/
