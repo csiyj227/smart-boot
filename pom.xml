@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.smart</groupId>
+        <artifactId>smart</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>smart-boot</artifactId>
+    <name>smart-boot</name>
+    <description>Monolith aggregation — auth + UPMS + codegen in a single JAR</description>
+
+    <dependencies>
+        <!-- Auth server -->
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>smart-auth</artifactId>
+        </dependency>
+
+        <!-- UPMS -->
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>smart-system-biz</artifactId>
+        </dependency>
+
+        <!-- Codegen -->
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>smart-codegen-biz</artifactId>
+        </dependency>
+
+        <!--
+            Flow（流程引擎）。单体模式下整体打进 boot 一起跑；微服务模式下
+            smart-flow 是独立 application，但模块间没有任何代码耦合 ——
+            这里只是 maven 依赖关系，运行时通过 ComponentScan 决定 Bean
+            是否注册。
+        -->
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>smart-flow-biz</artifactId>
+        </dependency>
+
+        <!--
+            AI（智能体平台：LLM / RAG / Agent / MCP）。和 flow 一样，
+            单体模式下整体打进 boot 一起跑；微服务模式下 smart-ai 是独立
+            application（端口 5009）。是否被注册由 ComponentScan 决定。
+        -->
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>smart-ai-biz</artifactId>
+        </dependency>
+
+        <!--
+            NL2SQL（自然语言转 SQL / 数据分析平台）。同 flow / ai 的处理方式：
+            单体模式下整体打进 boot 一起跑；微服务模式下 smart-nl2sql 是独立
+            application（端口 5010）。
+            没有这条依赖，nl2sql 的 Controller / Service / Mapper 不会进 classpath，
+            @ComponentScan 加再多也扫不到，请求 /nl2sql/datasource/page 会被
+            fallback 到 ResourceHttpRequestHandler 报 NoResourceFoundException。
+        -->
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>smart-nl2sql-biz</artifactId>
+        </dependency>
+
+        <!-- PostgreSQL -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+
+        <!-- Druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-3-starter</artifactId>
+        </dependency>
+
+        <!-- Redisson -->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Nacos discovery (optional in boot mode, disabled via spring.profiles) -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!--
+                        单体模式聚合了 auth + UPMS + codegen + flow + AI（含 Spring AI、Tika、pgvector），
+                        启动时常驻内存约 600MB，加上文档解析（Tika 解析 PDF/PPTX 内存放大 5-10 倍），
+                        默认 256m/512m 堆极易 OOM。这里给 mvn spring-boot:run 启动设置 2g 堆并开启 OOM dump。
+                        IDE 直接 run 主类时不会走这里，需要在 Run Configuration 的 VM options 单独配 -Xmx2g。
+                    -->
+                    <jvmArguments>
+                        -Xms512m
+                        -Xmx2g
+                        -XX:+HeapDumpOnOutOfMemoryError
+                        -XX:HeapDumpPath=./heapdump.hprof
+                    </jvmArguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

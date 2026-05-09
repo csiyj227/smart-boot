@@ -1,0 +1,150 @@
+server:
+  port: 8080
+  undertow:
+    buffer-size: 1024
+    direct-buffers: true
+
+spring:
+  application:
+    name: smart-boot
+  profiles:
+    active: boot
+  autoconfigure:
+    exclude:
+      - com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration
+  # ⚠️ Spring AI 占位配置：
+  # 单体模式下 spring-ai-openai-spring-boot-starter 会自动装配 OpenAiApi，
+  # 如果 api-key 缺失，启动时会报 `OpenAiApi requires apiKey`。
+  # 真正使用的 ChatModel/EmbeddingModel 由 ChatModelFactory / EmbeddingModelFactory
+  # 在运行期根据数据库 ai_model_provider / ai_model_config 表动态创建，
+  # 这里只是占位，实际值通过前端「AI 智能平台 → 模型管理」配置。
+  ai:
+    # Spring AI OpenAI 兼容协议接入阿里百炼（DashScope）：
+    #   1. base-url 必须是 https://dashscope.aliyuncs.com/compatible-mode
+    #      Spring AI 会自动拼 /v1/chat/completions；
+    #      如果填错（比如只到 dashscope.aliyuncs.com），百炼返回 application/octet-stream 的错误页，
+    #      Spring AI 找不到对应 HttpMessageConverter 会抛
+    #      "Error while extracting response for type [...ChatCompletion]"。
+    #   2. api-key 不要带 "Bearer " 前缀，Spring AI 会自动加 Authorization: Bearer xxx，
+    #      重复加会让百炼鉴权失败。
+    #   3. options.model 必须显式指定百炼支持的模型（qwen-turbo / qwen-plus / qwen-max ...），
+    #      不能沿用 OpenAI 默认的 gpt-3.5-turbo。
+    openai:
+      api-key: ${AI_OPENAI_API_KEY:sk-******}
+      base-url: ${AI_OPENAI_BASE_URL:https://dashscope.aliyuncs.com/compatible-mode}
+      chat:
+        options:
+          model: ${AI_CHAT_MODEL:qwen-plus}
+          temperature: 0.3
+      embedding:
+        api-key: ${AI_OPENAI_API_KEY:sk-******}
+        base-url: ${AI_OPENAI_BASE_URL:https://dashscope.aliyuncs.com/compatible-mode}
+        options:
+          # 百炼 embedding 模型：text-embedding-v2 / text-embedding-v3 / text-embedding-v4
+          model: ${AI_EMBEDDING_MODEL:text-embedding-v3}
+    retry:
+      max-attempts: 3
+      backoff:
+        initial-interval: 1000
+        multiplier: 2
+  # AI 模块文档解析用的异步线程池（@Async 任务）
+  task:
+    execution:
+      pool:
+        core-size: 4
+        max-size: 8
+        queue-capacity: 100
+      thread-name-prefix: ai-async-
+  # 全局 Jackson 配置：让所有 LocalDateTime / Date 序列化为 yyyy-MM-dd HH:mm:ss（GMT+8）
+  # 这样前端拿到的 createTime 直接就是 "2026-05-02 21:30:00"，无需再 dayjs 转换
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null   # 顺手过滤 null 字段，减少前端对 undefined 的判空
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    # sslmode=disable：避免 PG 16 默认尝试 SSL 握手失败导致 Druid 报「尝试连线已失败」
+    # tcpKeepAlive=true：长连接保活，防止 NAT/防火墙静默断连
+    url: jdbc:postgresql://${PG_HOST:localhost}:${PG_PORT:5432}/${PG_DB:csiyj_db}?sslmode=disable&tcpKeepAlive=true
+    username: ${PG_USER:csiyj}
+    password: ${PG_PASS:******}
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      stat-view-servlet:
+        enabled: true
+      web-stat-filter:
+        enabled: true
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASS:******}
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: delFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# 文件上传大小（覆盖默认 1MB / 10MB），分片上传时单分片不会超过 maxFileSize
+spring.servlet.multipart:
+  max-file-size: 100MB
+  max-request-size: 110MB
+
+# Quartz JDBC 持久化 + 集群模式（11 张 qrtz_* 表已在 db/public.sql 创建）
+# 关键：不要在 properties 里显式写 org.quartz.jobStore.class=JobStoreTX，
+# 否则 Quartz 会自己解析 org.quartz.jobStore.dataSource 字符串，找不到就报
+# "There is no DataSource named 'null'"。
+# 让 Spring Boot QuartzAutoConfiguration 自动用 LocalDataSourceJobStore 把主 DataSource 注进去即可。
+spring.quartz:
+  job-store-type: jdbc
+  jdbc:
+    initialize-schema: never            # 不让 Spring Boot 自动建表，使用 db/public.sql 里的 schema
+  properties:
+    org.quartz.scheduler.instanceName: SmartScheduler
+    org.quartz.scheduler.instanceId: AUTO
+    org.quartz.threadPool.class: org.quartz.simpl.SimpleThreadPool
+    org.quartz.threadPool.threadCount: '10'
+    org.quartz.threadPool.threadPriority: '5'
+    # 注意：jobStore.class 由 Spring Boot 自动设为 LocalDataSourceJobStore，禁止在此重写
+    org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+    org.quartz.jobStore.tablePrefix: qrtz_
+    org.quartz.jobStore.isClustered: 'true'
+    org.quartz.jobStore.clusterCheckinInterval: '15000'
+    org.quartz.jobStore.useProperties: 'false'
+    org.quartz.jobStore.misfireThreshold: '60000'
+
+smart:
+  tenant:
+    enabled: true
+    column: tenant_id
+  auth:
+    jwt:
+      # JWT RSA 签名密钥落盘目录（重启后复用，避免旧 token 失效）
+      # 容器化部署时建议改为持久化卷路径，例如 /data/smart/keys
+      key-store-path: ${user.home}/.smart/keys
+      # 固定 keyId，避免每次启动随机生成
+      key-id: smart-jwt-key
+  # 文件管理：本地存储为默认，切到 minio 时把 storage-type 改为 minio 并填写 minio.* 配置
+  file:
+    storage-type: local                  # local | minio
+    local-base-dir: ${user.home}/.smart/files
+    download-base-url: /system/file/download
+    max-file-size: 104857600             # 100MB（单文件硬上限，超过需走分片）
+    minio:
+      endpoint: http://127.0.0.1:9000
+      access-key: minioadmin
+      secret-key: minioadmin
+      bucket-name: smart
+      public-base-url: http://127.0.0.1:9000/smart
+
+logging:
+  level:
+    com.smart: debug
+    org.quartz: warn
