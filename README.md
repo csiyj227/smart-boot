@@ -10,31 +10,31 @@
 
 ## 项目展示
 
-![系统截图1](pic/iwEcAqNwbmcDAQTRAXkF0QKbBrBDjwNQOWJBXQnUUiJXHrwAB9MAAAABWDdDSggACaJpbQoAC9IAALEN.png)
+![系统截图1](https://github.com/csiyj227/smart-boot/blob/main/docs/pic/iwEcAqNwbmcDAQTRAXkF0QKbBrBDjwNQOWJBXQnUUiJXHrwAB9MAAAABWDdDSggACaJpbQoAC9IAALEN.png)
 
-![系统截图2](pic/iwEcAqNwbmcDAQTRAYQF0QKoBrC1QVDb98txQwnUUiJN2VQAB9MAAAABWDdDSggACaJpbQoAC9IAASuQ.png)
+![系统截图2](https://github.com/csiyj227/smart-boot/blob/main/docs/pic/iwEcAqNwbmcDAQTRAYQF0QKoBrC1QVDb98txQwnUUiJN2VQAB9MAAAABWDdDSggACaJpbQoAC9IAASuQ.png)
 
-![系统截图3](pic/iwEcAqNwbmcDAQTRCdkF0QSyBrDseQpiC6RX_wnUUiJM5gYAB9MAAAABWDdDSggACaJpbQoAC9IABx9j.png)
+![系统截图3](https://github.com/csiyj227/smart-boot/blob/main/docs/pic/iwEcAqNwbmcDAQTRCdkF0QSyBrDseQpiC6RX_wnUUiJM5gYAB9MAAAABWDdDSggACaJpbQoAC9IABx9j.png)
 
-![系统截图4](pic/iwEcAqNwbmcDAQTRCeIF0QS9BrBY7WNZA17QMwnUUiGtSLkDB9MAAAABWDdDSggACaJpbQoAC9IAA41r.png)
+![系统截图4](https://github.com/csiyj227/smart-boot/blob/main/docs/pic/iwEcAqNwbmcDAQTRCeIF0QS9BrBY7WNZA17QMwnUUiGtSLkDB9MAAAABWDdDSggACaJpbQoAC9IAA41r.png)
 
-![系统截图5](pic/iwEcAqNwbmcDAQTRCeoF0QTSBrChcE1sHxA0hwnUUiGtSLkEB9MAAAABWDdDSggACaJpbQoAC9IAAwIH.png)
+![系统截图5](https://github.com/csiyj227/smart-boot/blob/main/docs/pic/iwEcAqNwbmcDAQTRCeoF0QTSBrChcE1sHxA0hwnUUiGtSLkEB9MAAAABWDdDSggACaJpbQoAC9IAAwIH.png)
 
-![系统截图6](pic/iwEcAqNwbmcDAQTRCf8F0QTUBrBdYV7mIiswqQnUUiGtSLkAB9MAAAABWDdDSggACaJpbQoAC9IABOla.png)
+![系统截图6](https://github.com/csiyj227/smart-boot/blob/main/docs/pic/iwEcAqNwbmcDAQTRCf8F0QTUBrBdYV7mIiswqQnUUiGtSLkAB9MAAAABWDdDSggACaJpbQoAC9IABOla.png)
 
-![系统截图7](pic/iwEcAqNwbmcDAQTRCf8F0QTaBrD0GZ1QXWlWmwnUUiGtSLkCB9MAAAABWDdDSggACaJpbQoAC9IAAoZB.png)
+![系统截图7](https://github.com/csiyj227/smart-boot/blob/main/docs/pic/iwEcAqNwbmcDAQTRCf8F0QTaBrD0GZ1QXWlWmwnUUiGtSLkCB9MAAAABWDdDSggACaJpbQoAC9IAAoZB.png)
 
-![系统截图8](pic/iwEcAqNwbmcDAQTRCfUF0QTTBrDAv-DE8g8guAnUVJPPIGUAB9MAAAABWDdDSggACaJpbQoAC9IABSKz.png)
+![系统截图8](https://github.com/csiyj227/smart-boot/blob/main/docs/pic/iwEcAqNwbmcDAQTRCfUF0QTTBrDAv-DE8g8guAnUVJPPIGUAB9MAAAABWDdDSggACaJpbQoAC9IABSKz.png)
 
-![系统截图9](pic/iwEdAqNwbmcDAQTRAXgF0QKcBrC92pLDGcBGNAnUUiJRApUAB9MAAAABWDdDSggACaJpbQoAC9IAAKHi.png)
+![系统截图9](https://github.com/csiyj227/smart-boot/blob/main/docs/pic/iwEdAqNwbmcDAQTRAXgF0QKcBrC92pLDGcBGNAnUUiJRApUAB9MAAAABWDdDSggACaJpbQoAC9IAAKHi.png)
 
-![系统截图10](pic/iwEdAqNwbmcDAQTRAYUF0QKWBrCEo5oLYsza7QnUUiKoFDwAB9MAAAABWDdDSggACaJpbQoAC9IAAQdq.png)
+![系统截图10](https://github.com/csiyj227/smart-boot/blob/main/docs/pic/iwEdAqNwbmcDAQTRAYUF0QKWBrCEo5oLYsza7QnUUiKoFDwAB9MAAAABWDdDSggACaJpbQoAC9IAAQdq.png)
 
-![系统截图11](pic/iwEdAqNwbmcDAQTRCeEF0QS3BrBF5zuT44IQEAnUVJPPIGUBB9MAAAABWDdDSggACaJpbQoAC9IAByCm.png)
+![系统截图11](https://github.com/csiyj227/smart-boot/blob/main/docs/pic/iwEdAqNwbmcDAQTRCeEF0QS3BrBF5zuT44IQEAnUVJPPIGUBB9MAAAABWDdDSggACaJpbQoAC9IAByCm.png)
 
-![系统截图12](pic/iwEdAqNwbmcDAQTRCeIF0QTRBrCc7AdLCfwq8QnUUiGtSLkBB9MAAAABWDdDSggACaJpbQoAC9IAAjgS.png)
+![系统截图12](https://github.com/csiyj227/smart-boot/blob/main/docs/pic/iwEdAqNwbmcDAQTRCeIF0QTRBrCc7AdLCfwq8QnUUiGtSLkBB9MAAAABWDdDSggACaJpbQoAC9IAAjgS.png)
 
-![系统截图13](pic/iwEeAqNwbmcDAQTRCfoF0QTZBrAO43emWA-XvAnUUiGtFJQAB9MAAAABWDdDSggACaJpbQoAC9IAAwcl.png)
+![系统截图13](https://github.com/csiyj227/smart-boot/blob/main/docs/pic/iwEeAqNwbmcDAQTRCfoF0QTZBrAO43emWA-XvAnUUiGtFJQAB9MAAAABWDdDSggACaJpbQoAC9IAAwcl.png)
 
 ## 技术栈
 
