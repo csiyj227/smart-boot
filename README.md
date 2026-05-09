@@ -1,6 +1,40 @@
 # Smart Admin
 
-> 企业级多租户微服务后台管理脚手架，以 RuoYi-Cloud 为功能蓝本，集成 AI 智能平台、流程引擎、表单设计器、NL2SQL 智能分析等高级能力。
+> 企业级多租户微服务后台管理脚手架,以 RuoYi-Cloud 为功能蓝本,集成 AI 智能平台、流程引擎、表单设计器、NL2SQL 智能分析等高级能力。
+
+## 项目地址
+
+- **前端仓库**: [https://github.com/csiyj227/smart-ui-vue](https://github.com/csiyj227/smart-ui-vue)
+- **单体后端**: [https://github.com/csiyj227/smart-boot](https://github.com/csiyj227/smart-boot)
+- **微服务后端**: [https://github.com/csiyj227/smart-cloud](https://github.com/csiyj227/smart-cloud)
+
+## 项目展示
+
+![系统截图1](pic/iwEcAqNwbmcDAQTRAXkF0QKbBrBDjwNQOWJBXQnUUiJXHrwAB9MAAAABWDdDSggACaJpbQoAC9IAALEN.png)
+
+![系统截图2](pic/iwEcAqNwbmcDAQTRAYQF0QKoBrC1QVDb98txQwnUUiJN2VQAB9MAAAABWDdDSggACaJpbQoAC9IAASuQ.png)
+
+![系统截图3](pic/iwEcAqNwbmcDAQTRCdkF0QSyBrDseQpiC6RX_wnUUiJM5gYAB9MAAAABWDdDSggACaJpbQoAC9IABx9j.png)
+
+![系统截图4](pic/iwEcAqNwbmcDAQTRCeIF0QS9BrBY7WNZA17QMwnUUiGtSLkDB9MAAAABWDdDSggACaJpbQoAC9IAA41r.png)
+
+![系统截图5](pic/iwEcAqNwbmcDAQTRCeoF0QTSBrChcE1sHxA0hwnUUiGtSLkEB9MAAAABWDdDSggACaJpbQoAC9IAAwIH.png)
+
+![系统截图6](pic/iwEcAqNwbmcDAQTRCf8F0QTUBrBdYV7mIiswqQnUUiGtSLkAB9MAAAABWDdDSggACaJpbQoAC9IABOla.png)
+
+![系统截图7](pic/iwEcAqNwbmcDAQTRCf8F0QTaBrD0GZ1QXWlWmwnUUiGtSLkCB9MAAAABWDdDSggACaJpbQoAC9IAAoZB.png)
+
+![系统截图8](pic/iwEcAqNwbmcDAQTRCfUF0QTTBrDAv-DE8g8guAnUVJPPIGUAB9MAAAABWDdDSggACaJpbQoAC9IABSKz.png)
+
+![系统截图9](pic/iwEdAqNwbmcDAQTRAXgF0QKcBrC92pLDGcBGNAnUUiJRApUAB9MAAAABWDdDSggACaJpbQoAC9IAAKHi.png)
+
+![系统截图10](pic/iwEdAqNwbmcDAQTRAYUF0QKWBrCEo5oLYsza7QnUUiKoFDwAB9MAAAABWDdDSggACaJpbQoAC9IAAQdq.png)
+
+![系统截图11](pic/iwEdAqNwbmcDAQTRCeEF0QS3BrBF5zuT44IQEAnUVJPPIGUBB9MAAAABWDdDSggACaJpbQoAC9IAByCm.png)
+
+![系统截图12](pic/iwEdAqNwbmcDAQTRCeIF0QTRBrCc7AdLCfwq8QnUUiGtSLkBB9MAAAABWDdDSggACaJpbQoAC9IAAjgS.png)
+
+![系统截图13](pic/iwEeAqNwbmcDAQTRCfoF0QTZBrAO43emWA-XvAnUUiGtFJQAB9MAAAABWDdDSggACaJpbQoAC9IAAwcl.png)
 
 ## 技术栈
 
@@ -184,4 +218,4 @@ docs/
 
 ## 许可证
 
-私有项目，仅限内部使用。
+本项目采用 MIT 开源协议，完全开源，允许免费商用。详情请参阅 [LICENSE](LICENSE) 文件。
