@@ -7,6 +7,7 @@
 - **前端仓库**: [https://github.com/csiyj227/smart-ui-vue](https://github.com/csiyj227/smart-ui-vue)
 - **单体后端**: [https://github.com/csiyj227/smart-boot](https://github.com/csiyj227/smart-boot)
 - **微服务后端**: [https://github.com/csiyj227/smart-cloud](https://github.com/csiyj227/smart-cloud)
+- **演示地址**: [http://smart.smtshell.cn:28081](http://smart.smtshell.cn:28081)
 
 ## 项目展示
 
