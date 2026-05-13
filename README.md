@@ -8,7 +8,7 @@
 - **单体后端**: [https://github.com/csiyj227/smart-boot](https://github.com/csiyj227/smart-boot)
 - **微服务后端**: [https://github.com/csiyj227/smart-cloud](https://github.com/csiyj227/smart-cloud)
 - **演示地址**: [http://smart.smtshell.cn:28081](http://smart.smtshell.cn:28081)
-
+- **演示账号**: admin/smart123
 ## 项目展示
 
 ![系统截图1](https://github.com/csiyj227/smart-boot/blob/main/docs/pic/iwEcAqNwbmcDAQTRAXkF0QKbBrBDjwNQOWJBXQnUUiJXHrwAB9MAAAABWDdDSggACaJpbQoAC9IAALEN.png)
