@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 监听 Spring Security 的登出成功事件，转换为 Smart 的 {@link LoginLogEvent}，
- * 让 upms-biz 的监听器统一处理日志落库 + 在线用户清理。
+ * 让 system-biz 的监听器统一处理日志落库 + 在线用户清理。
  *
  * <p>注意：当前未显式配置 logout endpoint。等后续接入 {@code /logout} 路由或前端
  * 主动调用 {@code OnlineUserController#forceLogoutByToken} 时，本监听器即可生效。

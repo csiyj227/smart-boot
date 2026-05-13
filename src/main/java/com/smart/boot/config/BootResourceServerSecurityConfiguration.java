@@ -29,10 +29,13 @@ public class BootResourceServerSecurityConfiguration {
 
     @Bean
     public Converter<Jwt, AbstractAuthenticationToken> jwtAuthenticationConverter() {
-        return jwt -> {
-            Collection<? extends GrantedAuthority> authorities = extractAuthorities(jwt.getClaim("authorities"));
-            String principalName = resolvePrincipalName(jwt.getClaims(), jwt.getSubject());
-            return new JwtAuthenticationToken(jwt, authorities, principalName);
+        return new Converter<Jwt, AbstractAuthenticationToken>() {
+            @Override
+            public AbstractAuthenticationToken convert(Jwt jwt) {
+                Collection<? extends GrantedAuthority> authorities = extractAuthorities(jwt.getClaim("authorities"));
+                String principalName = resolvePrincipalName(jwt.getClaims(), jwt.getSubject());
+                return new JwtAuthenticationToken(jwt, authorities, principalName);
+            }
         };
     }
 

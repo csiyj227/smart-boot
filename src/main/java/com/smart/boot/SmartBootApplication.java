@@ -10,7 +10,7 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
- * 单体启动入口 — 聚合 auth + UPMS + codegen 等模块。
+ * 单体启动入口 — 聚合 auth + SYSTEM + codegen 等模块。
  * 使用 --spring.profiles.active=boot 可禁用 Nacos 服务发现。
  * 单体模式使用本地调用，不走 Feign 远程调用。
  *
@@ -32,6 +32,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
         // KnowledgeController 等被注册，否则前端 /ai/agent/page、/ai/chat/conversations
         // 等请求都会变成静态资源 404。
         basePackages = {
+                "com.smart.boot",
                 "com.smart.auth",
                 "com.smart.admin",
                 "com.smart.codegen",

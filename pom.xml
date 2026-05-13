@@ -13,7 +13,7 @@
 
     <artifactId>smart-boot</artifactId>
     <name>smart-boot</name>
-    <description>Monolith aggregation — auth + UPMS + codegen in a single JAR</description>
+    <description>Monolith aggregation — auth + SYSTEM + codegen in a single JAR</description>
 
     <dependencies>
         <!-- Auth server -->
@@ -22,7 +22,7 @@
             <artifactId>smart-auth</artifactId>
         </dependency>
 
-        <!-- UPMS -->
+        <!-- SYSTEM -->
         <dependency>
             <groupId>com.smart</groupId>
             <artifactId>smart-system-biz</artifactId>
@@ -101,7 +101,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <!--
-                        单体模式聚合了 auth + UPMS + codegen + flow + AI（含 Spring AI、Tika、pgvector），
+                        单体模式聚合了 auth + SYSTEM + codegen + flow + AI（含 Spring AI、Tika、pgvector），
                         启动时常驻内存约 600MB，加上文档解析（Tika 解析 PDF/PPTX 内存放大 5-10 倍），
                         默认 256m/512m 堆极易 OOM。这里给 mvn spring-boot:run 启动设置 2g 堆并开启 OOM dump。
                         IDE 直接 run 主类时不会走这里，需要在 Run Configuration 的 VM options 单独配 -Xmx2g。

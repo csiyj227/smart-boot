@@ -3,7 +3,8 @@ server:
   undertow:
     buffer-size: 1024
     direct-buffers: true
-
+preview:
+  enabled: false
 spring:
   application:
     name: smart-boot
@@ -30,14 +31,14 @@ spring:
     #   3. options.model 必须显式指定百炼支持的模型（qwen-turbo / qwen-plus / qwen-max ...），
     #      不能沿用 OpenAI 默认的 gpt-3.5-turbo。
     openai:
-      api-key: ${AI_OPENAI_API_KEY:sk-******}
+      api-key: ${AI_OPENAI_API_KEY:sk-1q2w3e}
       base-url: ${AI_OPENAI_BASE_URL:https://dashscope.aliyuncs.com/compatible-mode}
       chat:
         options:
           model: ${AI_CHAT_MODEL:qwen-plus}
           temperature: 0.3
       embedding:
-        api-key: ${AI_OPENAI_API_KEY:sk-******}
+        api-key: ${AI_OPENAI_API_KEY:sk-1q2w3e}
         base-url: ${AI_OPENAI_BASE_URL:https://dashscope.aliyuncs.com/compatible-mode}
         options:
           # 百炼 embedding 模型：text-embedding-v2 / text-embedding-v3 / text-embedding-v4
@@ -65,9 +66,9 @@ spring:
     driver-class-name: org.postgresql.Driver
     # sslmode=disable：避免 PG 16 默认尝试 SSL 握手失败导致 Druid 报「尝试连线已失败」
     # tcpKeepAlive=true：长连接保活，防止 NAT/防火墙静默断连
-    url: jdbc:postgresql://${PG_HOST:localhost}:${PG_PORT:5432}/${PG_DB:csiyj_db}?sslmode=disable&tcpKeepAlive=true
-    username: ${PG_USER:csiyj}
-    password: ${PG_PASS:******}
+    url: jdbc:postgresql://${PG_HOST:localhost}:${PG_PORT:5432}/${PG_DB:kadian_db}?sslmode=disable&tcpKeepAlive=true
+    username: ${PG_USER:kadian}
+    password: ${PG_PASS:1q2w3e}
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       initial-size: 5
@@ -81,7 +82,7 @@ spring:
     redis:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
-      password: ${REDIS_PASS:******}
+      password: ${REDIS_PASS:1q2w3e}
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
